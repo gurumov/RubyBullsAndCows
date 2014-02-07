@@ -1,0 +1,39 @@
+PATH
+  remote: ./gem/BCLogic
+  specs:
+    BCLogic (0.0.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    backports (3.5.0)
+    multi_json (1.8.4)
+    rack (1.5.2)
+    rack-protection (1.5.2)
+      rack
+    rack-test (0.6.2)
+      rack (>= 1.0)
+    sequel (4.7.0)
+    sinatra (1.4.4)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    sinatra-contrib (1.4.2)
+      backports (>= 2.0)
+      multi_json
+      rack-protection
+      rack-test
+      sinatra (~> 1.4.0)
+      tilt (~> 1.3)
+    sqlite3 (1.3.8-x86-mingw32)
+    tilt (1.4.1)
+
+PLATFORMS
+  x86-mingw32
+
+DEPENDENCIES
+  BCLogic!
+  sequel (~> 4.3)
+  sinatra (~> 1.4)
+  sinatra-contrib (~> 1.4)
+  sqlite3 (~> 1.3)
