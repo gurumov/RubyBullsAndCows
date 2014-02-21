@@ -1,0 +1,94 @@
+<%= partial(:'partials/background') %>
+<div class="row"> 
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+      </div>
+      <div class="panel-body" style="height:400px">
+        <div class="row">
+          <div class="col-md-6">
+            <table class="table table-striped"> 
+              <thead>
+                <tr>
+                  <th colspan="12" class="field-label active">
+                    <div class="text-center">You</div>
+                  </th>
+                </tr>
+                <tr>
+                  <td colspan="6" class="field-label active">
+                    <div class="text-center">number</div>
+                  </td>
+                  <td colspan="3" class="field-label active">
+                    <div class="text-center">bulls</div>
+                  </td>
+                  <td colspan="3" class="field-label active">
+                    <div class="text-center">cows</div>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="6">
+                    <div class="text-center">number</div>
+                  </td>
+                  <td colspan="3">
+                    <div class="text-center">number</div>
+                  </td>
+                  <td colspan="3">
+                    <div class="text-center">number</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-6">
+            <table class="table table-striped"> 
+              <thead>
+                <tr>
+                  <th colspan="12" class="field-label active">
+                    <div class="text-center">Opp</div>
+                  </th>
+                </tr>
+                <tr>
+                  <td colspan="6" class="field-label active">
+                    <div class="text-center">number</div>
+                  </td>
+                  <td colspan="3" class="field-label active">
+                    <div class="text-center">bulls</div>
+                  </td>
+                  <td colspan="3" class="field-label active">
+                    <div class="text-center">cows</div>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colspan="6">
+                    <div class="text-center">number</div>
+                  </td>
+                  <td colspan="3">
+                    <div class="text-center">number</div>
+                  </td>
+                  <td colspan="3">
+                    <div class="text-center">number</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+         <form class="form-horizontal col-md-10" method="post" action="/game/guess">
+          <div class="form-group">
+            <label for="number" class="col-sm-3 control-label">number</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="number" required="required" />
+            </div>
+            <div class="col-sm-3">
+              <button type="submit" class="btn btn-success btn-sm">Guess</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

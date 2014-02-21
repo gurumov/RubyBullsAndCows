@@ -1,0 +1,16 @@
+# List all environments in use
+environments:
+  - development
+
+# Choose environment
+environment: development
+
+# Paths to various folders
+views_path:      './views'
+public_path:     './public'
+migrations_path: './db/migrations'
+
+# Development specific settings
+development:
+  sqlite_path: './database/BCdb.db'
+

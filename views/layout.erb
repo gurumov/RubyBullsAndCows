@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BullsAndCows</title>
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="stylesheets/BullsAndCows.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="javascripts/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div class="container">
+        <div class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">BullsAndCows</a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <% if logged? %>
+                  <li><a href="/game/">Play</a></lI>
+                  <li><a href="/rankings/">Rankings</a></li>
+                <% end %>
+          		<li><a href="/about/">About</a></lI>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <% if logged? %>
+                  <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.username %> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#"><span class="glyphicon glyphicon-cog"></span> My Profile</a></li>
+                      <li class="divider"></li>
+                      <li><a href="/auth/logout"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                    </ul>
+                  </li>
+                <% else %>
+                  <li><a href="/auth/login">Login</a></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <% %w[error success warning info].each do |key| %>
+            <% if flash[key] %>
+              <div class="alert alert-<%= key == 'error' ? 'danger' : key %>">
+                <%= flash[key] %>
+              </div>
+            <% end %>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">Moooo!</p>
+      </div>
+    </div>
+  </body>
+</html>
