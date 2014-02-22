@@ -5,6 +5,8 @@ module BullsAndCows
     helpers UserHelpers
     helpers GameHelpers
 
+    set :bot, nil
+
     get '/', user: :logged do
       erb :'game/choices'
     end
@@ -13,8 +15,8 @@ module BullsAndCows
 
       user = current_user.find_best_match
       if user.nil?
-        flash[:info] = "We couldn't find you an opponent!"
-        redirect NAMESPACE + '/findOpponent'
+        flash[:info] = "We couldn't find you an opponent! Bummer..."
+        redirect NAMESPACE + '/'
       end
 
       #become available
@@ -69,7 +71,7 @@ module BullsAndCows
       end
       
       bot = BCLogic.new number
-      set :bot, bot
+      settings.bot = bot
 
       session[:number] = number
       redirect NAMESPACE + '/bot'
@@ -87,13 +89,17 @@ module BullsAndCows
     post '/bot', user: :logged do
       guess = params[:guess]
       if valid? guess
-        bot = session[:bot]
+        bot = settings.bot
         if bot.player_guess guess
+          ranking = Ranking.where(user_id: current_user.id).first
+          ranking.victory
           redirect NAMESPACE + '/victory'
         elsif bot.opponent_guess
+          ranking = Ranking.where(user_id: current_user.id).first
+          ranking.defeat
           redirect NAMESPACE + '/defeat'
         else
-          session[:bot] = bot
+          settings.bot = bot
           redirect NAMESPACE + '/bot'
         end
       else

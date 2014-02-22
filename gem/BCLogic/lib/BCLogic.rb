@@ -17,18 +17,18 @@ class BCLogic
   end
 
   def player_guess(number)
-    @player_guesses.add(number.to_s) 
+    @player_guesses.push(number.to_s) 
     result = find_bulls_cows(number.to_s, @opponent_number)
     @player_guesses.concat result
-    return result[0] == '4'
+    result[0] == 4
   end
 
   def opponent_guess(*args)
     guess = @singleplayer ? guess_number : args[0].to_s
-    @opponent_guesses.add(guess)
+    @opponent_guesses.push(guess)
     result = find_bulls_cows(@player_number, guess)
     @opponent_guesses.concat result
-    return result[0] == '4'
+    result[0] == 4
   end
 
   def find_bulls_cows(first_number, second_number)
@@ -36,20 +36,22 @@ class BCLogic
     second_number = second_number.to_s
 
     bulls = first_number.chars.zip(second_number.chars).each.count do |element|
-      element.first_number == element.last
+      element.first == element.last
     end
 
     cows = (first_number.chars & second_number.chars).count - bulls
 
-    [bulls.to_s, cows.to_S]
+    [bulls, cows]
   end
 
   private
 
   def guess_number
     unless @opponent_guesses.empty?
-      result = find_bulls_cows(@player_number, @opponent_guesses[-1])
-      @choices.keep_if { |number|  result.eql? find_bulls_cows(@player_number, number)}
+      last_guess = @opponent_guesses[-3]
+      result = [@opponent_guesses[-2], @opponent_guesses[-1]]
+      @choices.delete last_guess
+      @choices.keep_if { |number|  result.eql? find_bulls_cows(last_guess, number)}
     end
     @choices.shuffle!
     @choices[0]
