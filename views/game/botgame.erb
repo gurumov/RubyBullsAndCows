@@ -1,0 +1,114 @@
+<%= partial(:'partials/background') %>
+<div class="row"> 
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        <div class="text-center">Guesses</div>
+      </div>
+      <div class="panel-body" style="height:400px">
+        <div class="row">
+          <div class="col-md-6">
+            <lable for="usernumber" class="col-md-6 control-lable">Your number</lable>
+            <input name="usernumber" class="col-md-6" type="text" placeholder="<%= @usernumber %>" disabled>
+            </input>
+          </div>
+          <div class="col-md-6">
+            <lable for="unused_digits" class="col-md-6 control-lable">Unused digits</lable>
+            <input name="unused_digits" class="col-md-6" type="text" placeholder="<%= @unused_digits %>" disabled>
+            </input>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <table class="table table-striped"> 
+              <thead>
+                <tr>
+                  <th colspan="12" class="field-label active">
+                    <div class="text-center">Your's</div>
+                  </th>
+                </tr>
+                <tr>
+                  <td colspan="6" class="field-label active">
+                    <div class="text-center">number</div>
+                  </td>
+                  <td colspan="3" class="field-label active">
+                    <div class="text-center">bulls</div>
+                  </td>
+                  <td colspan="3" class="field-label active">
+                    <div class="text-center">cows</div>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <% @user_guesses.each_slice(3) do |guess| %>
+                <tr>
+                  <td colspan="6">
+                    <div class="text-center"><%= guess[0] %></div>
+                  </td>
+                  <td colspan="3">
+                    <div class="text-center"><%= guess[1] %></div>
+                  </td>
+                  <td colspan="3">
+                    <div class="text-center"><%= guess[2] %></div>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-6">
+            <table class="table table-striped"> 
+              <thead>
+                <tr>
+                  <th colspan="12" class="field-label active">
+                    <div class="text-center">Opp</div>
+                  </th>
+                </tr>
+                <tr>
+                  <td colspan="6" class="field-label active">
+                    <div class="text-center">number</div>
+                  </td>
+                  <td colspan="3" class="field-label active">
+                    <div class="text-center">bulls</div>
+                  </td>
+                  <td colspan="3" class="field-label active">
+                    <div class="text-center">cows</div>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <% @opponent_guesses.each_slice(3) do |guess| %>
+                <tr>
+                  <td colspan="6">
+                    <div class="text-center"><%= guess[0] %></div>
+                  </td>
+                  <td colspan="3">
+                    <div class="text-center"><%= guess[1] %></div>
+                  </td>
+                  <td colspan="3">
+                    <div class="text-center"><%= guess[2] %></div>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <form class="form-horizontal col-md-10" method="post" action="/game/bot">
+          <div class="form-group">
+            <label for="guess" class="col-sm-3 control-label">Enter a number</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="guess" required="required" />
+            </div>
+            <div class="col-sm-3">
+              <button type="submit" class="btn btn-success btn-sm">Guess</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+

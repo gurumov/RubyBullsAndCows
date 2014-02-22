@@ -27,23 +27,49 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td colspan="2">
-                <div class="text-center">number</div>
-              </td>
-              <td colspan="4">
-                <div class="text-center">number</div>
-              </td>
-              <td colspan="2">
-                <div class="text-center">number</div>
-              </td>
-              <td colspan="2">
-                <div class="text-center">number</div>
-              </td>
-              <td colspan="2">
-                <div class="text-center">number</div>
-              </td>
-            </tr>
+            <% @rankings.each do |ranking| %>
+              <tr>
+                <td colspan="2">
+                  <div class="text-center"><%= ranking.rank %></div>
+                </td>
+                <td colspan="4">
+                  <div class="text-center"><%= ranking.user.username %></div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center"><%= ranking.games_won %></div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center"><%= ranking.games_lost %></div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center"><%= ranking.total_games %></div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <p> Your stats: </p>
+
+        <table class="table table-striped"> 
+          <tbody>
+              <tr>
+                <td colspan="2">
+                  <div class="text-center"><%= @user_ranking.rank %></div>
+                </td>
+                <td colspan="4">
+                  <div class="text-center"><%= @user_ranking.user.username %></div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center"><%= @user_ranking.games_won %></div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center"><%= @user_ranking.games_lost %></div>
+                </td>
+                <td colspan="2">
+                  <div class="text-center"><%= @user_ranking.total_games %></div>
+                </td>
+              </tr>
           </tbody>
         </table>
       </div>

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'BCLogic'
-  s.version     = '0.0.0'
+  s.version     = '0.0.1'
   s.date        = '2014-01-25'
   s.summary     = "A bot capable of playing bulls and cows"
   s.description = "A bot capable of playing bulls and cows"

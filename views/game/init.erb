@@ -1,0 +1,27 @@
+<%= partial(:'partials/background') %>
+<div class="row"> 
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        <div class="text-center">Guesses</div>
+      </div>
+      <div class="panel-body" style="height:400px">
+        <div class="row">
+          <form class="form-horizontal col-md-10" method="post" action="/game/init">
+            <div class="form-group">
+              <label for="number" class="col-sm-3 control-label">Choose a number</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name="number" required="required" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-4 col-md-offset-4">
+                <button type="submit" class="btn btn-success btn-sm">Play!</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

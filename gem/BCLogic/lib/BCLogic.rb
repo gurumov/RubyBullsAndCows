@@ -1,7 +1,7 @@
 class BCLogic
   attr_accessor :opponent_guesses, :player_guesses
 
-  def init(player_number, singleplayer=true, opponent_number=0)
+  def initialize(player_number, singleplayer=true, opponent_number=0)
     @player_number = player_number.to_s
     @opponent_number = singleplayer ? Array(0..9).sample(4).join : opponent_number.to_s
     @singleplayer = singleplayer
@@ -17,14 +17,18 @@ class BCLogic
   end
 
   def player_guess(number)
-    @player_guesses.add(number.to_s)
-    find_bulls_cows(number.to_s, @opponent_number)
+    @player_guesses.add(number.to_s) 
+    result = find_bulls_cows(number.to_s, @opponent_number)
+    @player_guesses.concat result
+    return result[0] == '4'
   end
 
   def opponent_guess(*args)
     guess = @singleplayer ? guess_number : args[0].to_s
     @opponent_guesses.add(guess)
-    find_bulls_cows(@player_number, guess)
+    result = find_bulls_cows(@player_number, guess)
+    @opponent_guesses.concat result
+    return result[0] == '4'
   end
 
   def find_bulls_cows(first_number, second_number)
@@ -37,7 +41,7 @@ class BCLogic
 
     cows = (first_number.chars & second_number.chars).count - bulls
 
-    [bulls, cows]
+    [bulls.to_s, cows.to_S]
   end
 
   private

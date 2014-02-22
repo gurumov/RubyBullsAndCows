@@ -1,7 +1,7 @@
 PATH
   remote: ./gem/BCLogic
   specs:
-    BCLogic (0.0.0)
+    BCLogic (0.0.1)
 
 GEM
   remote: https://rubygems.org/
