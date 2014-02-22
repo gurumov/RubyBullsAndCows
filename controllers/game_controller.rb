@@ -45,24 +45,6 @@ module BullsAndCows
 
     post '/init', user: :logged do
 
-       # if "userNumber" not in request.session:
-       #  if isValid(userGuess):
-       #      request.session["gameInProgress"] = True
-       #      request.session["userNumber"] = userGuess
-       #      unusedDigits = [x for x in range(10)]
-       #      request.session["unusedDigits"] = unusedDigits
-       #      bot = AI(userGuess)
-       #      request.session["bot"] = bot
-       #      userGuesses = []
-       #      request.session["userGuesses"] = userGuesses
-       #      botGuesses = []
-       #      request.session["botGuesses"] = botGuesses
-       #      context = {"userNumber": userGuess, "unusedDigits": unusedDigits}
-       #      return render(request, 'BullsAndCows/Play.html', context)
-       #  else:
-       #      context = {"invalid_number": "Invalid number!"}
-       #      return render(request, 'BullsAndCows/NewGame.html', context)
-
       number = params[:number]
 
       unless valid? number
@@ -79,7 +61,6 @@ module BullsAndCows
 
     get '/bot', user: :logged do
       @usernumber = session[:number]
-      @unused_digits =  (0..9).to_a.join(',')
       bot = settings.bot
       @user_guesses = bot.player_guesses
       @opponent_guesses = bot.opponent_guesses
